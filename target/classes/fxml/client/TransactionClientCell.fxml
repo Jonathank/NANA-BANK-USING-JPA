@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+
+<AnchorPane prefHeight="45.0" prefWidth="760.0" styleClass="cell_container" stylesheets="@../../style/TransactionCell.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox layoutX="14.0" layoutY="3.0" prefHeight="30.0" prefWidth="50.0" styleClass="trans_Icon_container" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="3.0">
+         <children>
+            <FontAwesomeIconView fx:id="incoming" glyphName="LONG_ARROW_RIGHT" size="20" />
+            <FontAwesomeIconView fx:id="outgoing" glyphName="LONG_ARROW_LEFT" layoutX="10.0" layoutY="20.0" size="20" />
+         </children>
+      </VBox>
+      <Label fx:id="Tdate" layoutX="102.0" layoutY="19.0" styleClass="trans_date_lbl" text="2024-01-01" AnchorPane.leftAnchor="102.0" AnchorPane.topAnchor="19.0" />
+      <Label fx:id="txtsender" layoutX="246.0" layoutY="18.0" styleClass="trans_PayeeAdress" text="Jonathan" AnchorPane.leftAnchor="246.0" AnchorPane.topAnchor="18.0" />
+      <Line endY="20.0" layoutX="383.5" layoutY="17.5" startY="-3.0" AnchorPane.leftAnchor="383.0" AnchorPane.topAnchor="14.0" />
+      <Label fx:id="txtreciever" layoutX="474.0" layoutY="18.0" styleClass="trans_PayeeAdress" text="Davis" AnchorPane.topAnchor="18.0" />
+      <Label fx:id="txtamount" layoutX="653.0" layoutY="13.0" styleClass="amount_label" text="20000" AnchorPane.rightAnchor="71.0" AnchorPane.topAnchor="13.0">
+         <graphic>
+            <FontAwesomeIconView glyphName="DOLLAR" />
+         </graphic>
+      </Label>
+   </children>
+</AnchorPane>

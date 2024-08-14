@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+
+<AnchorPane prefHeight="50.0" prefWidth="750.0" styleClass="client_cell_container" stylesheets="@../../style/ClientViewCell.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox layoutX="45.0" layoutY="6.0" prefHeight="40.0" prefWidth="696.0" AnchorPane.leftAnchor="45.0" AnchorPane.topAnchor="5.0">
+         <children>
+            <Label fx:id="paddress" layoutX="58.0" layoutY="10.0" text="\@jonathan1" />
+            <Label fx:id="fname" layoutX="10.0" layoutY="10.0" text="Nana" />
+            <Label fx:id="lname" text="Jonathan" />
+            <Label fx:id="Acc_type" layoutX="86.0" layoutY="10.0" styleClass="acc_display_lbl" text="Account Type" />
+            <Label fx:id="acc_no" layoutX="151.0" layoutY="10.0" styleClass="acc_display_lbl" text="Account number" />
+            <Label layoutX="352.0" layoutY="21.0" styleClass="acc_display_lbl" text="BAL--Shs:" />
+            <Label fx:id="balance" layoutX="475.0" layoutY="21.0" styleClass="acc_display_lbl" text="balance" />
+         </children>
+      </HBox>
+      <FontAwesomeIconView glyphName="USER" layoutX="14.0" layoutY="29.0" size="20" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
+   </children>
+</AnchorPane>

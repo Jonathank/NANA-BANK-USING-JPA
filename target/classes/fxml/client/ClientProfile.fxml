@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="Profile_view_container" stylesheets="@../../style/Profile.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.client.ProfileController">
+   <children>
+      <Text layoutX="238.0" layoutY="298.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Checking Account" AnchorPane.leftAnchor="238.0" AnchorPane.topAnchor="280.0" />
+      <VBox layoutX="227.0" layoutY="307.0" prefHeight="202.0" prefWidth="264.0" AnchorPane.leftAnchor="227.0" AnchorPane.topAnchor="307.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Account Number:" />
+            <Label fx:id="checkingNo" text="3452 4950" />
+            <Text layoutX="10.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Balance" />
+            <Label fx:id="chk_bal" layoutX="10.0" layoutY="27.0" text="10" />
+         </children>
+      </VBox>
+      <Text fx:id="payeeAdd" layoutX="36.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Savings Account" AnchorPane.leftAnchor="36.0" AnchorPane.topAnchor="239.0" />
+      <VBox layoutX="227.0" layoutY="62.0" prefHeight="202.0" prefWidth="228.0" AnchorPane.bottomAnchor="486.0" AnchorPane.leftAnchor="227.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="First Name:" />
+            <Label fx:id="fname" text="3452 4950" />
+            <Text layoutX="10.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name:" />
+            <Label fx:id="lname" layoutX="10.0" layoutY="27.0" text="\$2000" />
+         </children>
+      </VBox>
+      <Text layoutX="238.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="My Profile" />
+      <FontAwesomeIconView glyphName="USER" layoutX="54.0" layoutY="203.0" size="150" />
+      <Text layoutX="240.0" layoutY="530.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Savings Account" />
+      <VBox layoutX="231.0" layoutY="537.0" prefHeight="202.0" prefWidth="264.0">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Account Number:" />
+            <Label fx:id="savingsNo" text="3452 4950" />
+            <Text layoutX="10.0" layoutY="23.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Balance" />
+            <Label fx:id="sav_bal" layoutX="10.0" layoutY="27.0" text="10" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
