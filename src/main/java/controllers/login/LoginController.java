@@ -87,7 +87,8 @@ public class LoginController implements Initializable {
 				  showAlert(AlertType.ERROR, "FIELD CAN'T BE EMPTY", "PLEASE ENTER PASSWORD", null);
 				  return; 
 				  }
-			if(Model.getInstance().validateAdminCredentials(em, txtuser.getText(), txtpass.getText())) {
+			  String password = getEncryptedValue(txtpass.getText(), 8);
+			if(Model.getInstance().validateAdminCredentials(em, txtuser.getText(), password)) {
 			
 				Model.getInstance().getViewFactory().closeStage(stage);
 				Model.getInstance().getViewFactory().showAdminWindow();
@@ -96,6 +97,13 @@ public class LoginController implements Initializable {
 			}
 	}
 	
+	
+	  private String getEncryptedValue(String value, int secret_key) {
+	  String encryptedValue = "";
+	  
+	  for(int i = 0; i < value.length(); i++) { char ch = value.charAt(i); ch +=
+	  secret_key; encryptedValue = encryptedValue + ch; } return encryptedValue; }
+	 
 	//alert
 	private void showAlert(AlertType type, String title, String header, String content) {
 	    Alert alert = new Alert(type);

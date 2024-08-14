@@ -146,12 +146,14 @@ public boolean validateCredentials(EntityManager em,String payeeAddress, String 
 
 //validates Admin credentials on login as client
 public boolean validateAdminCredentials(EntityManager em,String username, String password) {  
+	
 	TypedQuery<User> query = em.createQuery("SELECT u FROM User u WHERE u.username = :username AND u.password = :password", User.class);
       query.setParameter("username", username);
       query.setParameter("password", password);
 
       try {
           User user = query.getSingleResult();
+          //String pass = getDecryptedValue(user.getPassword(),8);
           if(user.getUsername().equals(username) && user.getPassword().equals(password)) {
           	return true;
           }
