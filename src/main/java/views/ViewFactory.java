@@ -96,11 +96,7 @@ public class ViewFactory {
 		  try {
 		  FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/dashboard/DashBoard.fxml"));
           root = loader.load();
-
-          // Get the controller from the loader
           DashBoardController dashboardController = loader.getController();
-          
-          // Set the payeeAddress to the dashboard controller
           if (payeeAddress != null) {
         	  dashboardController.setPayeeAddress(payeeAddress);
               

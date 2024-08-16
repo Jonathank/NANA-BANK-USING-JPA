@@ -12,7 +12,7 @@ Logo container style
 
 .login_logo_container Text{
 	-fx-font-size: 2em;
-	-fx-fill:#FFFFFF;
+	-fx-fill:#ECF39E;
 }
 
 .login_logo_container FontAwesomeIconView{

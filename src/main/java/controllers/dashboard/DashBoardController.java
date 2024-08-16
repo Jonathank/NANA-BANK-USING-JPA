@@ -12,6 +12,7 @@ import entitymanagerFactory.EntityMangerFactoryRepo;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -67,7 +68,7 @@ public class DashBoardController implements Initializable {
         btnsend.setOnAction(event -> onSend());
         setTime();
         
-        updateAccountBalances();
+        fetchData();
     }
 
     public void onSend() {
@@ -116,24 +117,6 @@ public class DashBoardController implements Initializable {
        
     }
 
-    // Method to update account balances
-    private void updateAccountBalances() {
-    	 Account checking = Model.getInstance().getAccountObject(em, txtusername.getText(), CheckingAccount.class);
-         System.out.println(">>>>>>>>>payee    "+ txtusername.getText());
-         Account savings = Model.getInstance().getAccountObject(em, txtusername.getText(), SavingsAccount.class);
-
-             if (checking != null) {
-                 check_bal.setText(checking.getBalance().toString());
-                
-            System.out.println(">>>>>>>>>   "+ checking.getBalance().toString());
-             }
-             if (savings != null) {
-                 saving_bal.setText(savings.getBalance().toString());
-                
-             }
-    }
-
-
     // Set running time
     private void setTime() {
         Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e ->
@@ -179,8 +162,53 @@ public class DashBoardController implements Initializable {
         } 
     }
 
-    public String getPayeeAddress() {
-        return payeeAddress;
+    private void loadData() {
+        // Load data from the database in a separate thread
+        new Thread(() -> {
+            try {
+                // Fetch data from the model
+                updateAccountBalances();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
+    }
+
+    private void fetchData() {
+    	 Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e ->
+    	 loadData()),
+         new KeyFrame(Duration.seconds(7)));
+ clock.setCycleCount(Animation.INDEFINITE);
+ clock.play();
+        
+    }
+
+    private void updateAccountBalances() {
+        Platform.runLater(() -> {
+            try {
+                // Fetch checking and savings accounts
+                Account checking = Model.getInstance().getAccountObject(em, txtusername.getText(), CheckingAccount.class);
+                Account savings = Model.getInstance().getAccountObject(em, txtusername.getText(), SavingsAccount.class);
+
+                // Log fetched account data for debugging
+                if (checking != null) {
+                    check_bal.setText(checking.getBalance().toString());
+                    System.out.println("Checking Balance: " + checking.getBalance());
+                } else {
+                    System.err.println("No checking account found for user: " + txtusername.getText());
+                }
+
+                if (savings != null) {
+                    saving_bal.setText(savings.getBalance().toString());
+                    System.out.println("Savings Balance: " + savings.getBalance());
+                } else {
+                    System.err.println("No savings account found for user: " + txtusername.getText());
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+                // Handle exceptions appropriately
+            }
+        });
     }
 
 }

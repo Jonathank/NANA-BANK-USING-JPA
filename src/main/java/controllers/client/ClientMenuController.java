@@ -34,20 +34,16 @@ public class ClientMenuController implements Initializable {
 		Model.getInstance().getViewFactory().showLoginWindow();
 	}
 
-	private void onProfile() {
-		Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.PROFILE);
-	}
-
-	private void onAccount() {
-		Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.ACCOUNTS);
-	}
-
-	private void onTransaction() {
-		Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.TRANSACTIONS);
-	}
-
 	private void onDashboard() {
 		Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.DASHBOARD);
 	}
-	
+	private void onTransaction() {
+		Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.TRANSACTIONS);
+	}
+	private void onAccount() {
+		Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.ACCOUNTS);
+	}
+	private void onProfile() {
+		Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.PROFILE);
+	}
 }

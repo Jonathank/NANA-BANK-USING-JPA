@@ -14,6 +14,7 @@ import javax.persistence.NonUniqueResultException;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import views.AccountType;
@@ -192,8 +193,10 @@ public ObservableList<ClientView> loadDataFromDatabase(EntityManager em) {
     try {
         TypedQuery<ClientView> query = em.createQuery("SELECT c FROM ClientView c", ClientView.class);
         List<ClientView> clientList = query.getResultList();
-        clients.addAll(clientList);
         
+        Platform.runLater(() -> {
+        	clients.addAll(clientList);
+        });
     } catch (Exception e) {
         e.printStackTrace();
     } finally {
@@ -222,9 +225,11 @@ public ObservableList<TransactionView> loadTransactionData(EntityManager em,Stri
 
         List<TransactionView> clientList = query.getResultList();
         List<TransactionView> clientList1 = query1.getResultList();
-        
-        transactions.addAll(clientList);
-        transactions.addAll(clientList1);
+        Platform.runLater(() -> {
+        	 transactions.addAll(clientList);
+             transactions.addAll(clientList1);
+        });
+       
         
     } catch (Exception e) {
         e.printStackTrace();
@@ -375,6 +380,7 @@ public Account getAccountObject(EntityManager em,String payeeAddress, Class<? ex
         // Execute the query and retrieve the result
         account = query.getSingleResult();
 
+        em.clear();
     } catch (NoResultException e) {
         // Handle the case where no account is found
         System.out.println("No account found for payeeAddress: " + payeeAddress + " and accountType: " + accountType.getSimpleName());
@@ -402,6 +408,7 @@ public AccountView getAccountViewObject(EntityManager em,String payeeAddress, St
 	        // Execute the query and retrieve the result
 	        accountview = query.getSingleResult();
 
+	        
 	    } catch (NoResultException e) {
 	        // Handle the case where no account is found
 	        System.out.println("No account found for payeeAddress: " + payeeAddress + " and accountType: " + AccountType);
@@ -493,9 +500,23 @@ public void deductSenderBalance(EntityManager em, String payeeAddress, BigDecima
 
     em.getTransaction().commit();
      em.clear();
-
 }
 
-
+public void deleteClient(EntityManager em, String payeeAddress) {
+    em.getTransaction().begin();
+    try {
+        // Use Query for delete operation
+        Query query = em.createQuery("DELETE FROM Client c WHERE c.payeeAddress = :payeeAddress");
+        query.setParameter("payeeAddress", payeeAddress);
+        int deletedCount = query.executeUpdate(); // This returns the number of entities deleted
+        em.getTransaction().commit();
+        System.out.println("Deleted " + deletedCount + " clients.");
+    } catch (RuntimeException e) {
+        if (em.getTransaction().isActive()) {
+            em.getTransaction().rollback(); // Rollback the transaction on error
+        }
+        throw e; // Re-throw the exception for further handling if needed
+    }
+}
 
 }

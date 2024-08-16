@@ -9,6 +9,6 @@
 </left>
 
 <center>
-<fx:include source="/fxml/dashboard/Dashboard.fxml"/>
+<fx:include source="/fxml/dashboard/Homepage.fxml"/>
 </center>
 </BorderPane>

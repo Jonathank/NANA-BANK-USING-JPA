@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import java.lang.String?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="login_logo_container" stylesheets="@../../style/login.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.dashboard.HomePageController">
+   <children>
+      <Label fx:id="txtdate" layoutX="638.0" layoutY="8.0" prefHeight="27.0" prefWidth="203.0" styleClass="date_lbl" text="Today, 2024-01-01" textFill="#ecf39e" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="8.0">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="22.0" />
+         </font></Label>
+      <Text layoutX="293.6328125" layoutY="255.8984375" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="section_title" text="Welcome to Nana Bank" AnchorPane.rightAnchor="307.859375" AnchorPane.topAnchor="230.0" />
+      <Label layoutX="337.0" layoutY="179.0" text="NANA BANK" textFill="#ecf39e" AnchorPane.leftAnchor="337.0" AnchorPane.topAnchor="179.0">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="29.0" />
+         </font></Label>
+      <FontAwesomeIconView glyphName="BANK" layoutX="346.0" layoutY="160.0" size="150" text="" />
+      <AnchorPane layoutX="4.0" layoutY="434.0" prefHeight="296.0" prefWidth="443.0" AnchorPane.bottomAnchor="38.0" AnchorPane.leftAnchor="4.0">
+         <children>
+            <Label layoutX="187.0" layoutY="179.0" prefHeight="22.0" prefWidth="131.0" styleClass="account_number" text="313 880 000 01" textFill="WHITE" AnchorPane.bottomAnchor="95.0" AnchorPane.leftAnchor="187.0">
+               <font>
+                  <Font name="Calibri Light" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView glyphName="PHONE" />
+               </graphic></Label>
+            <VBox layoutX="205.0" layoutY="-34.0" prefHeight="100.0" prefWidth="35.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="14.0" />
+            <Text layoutX="30.0" layoutY="29.8984375" strokeType="OUTSIDE" strokeWidth="0.0" text="Our Mission" AnchorPane.bottomAnchor="260.078125" AnchorPane.leftAnchor="30.0" AnchorPane.topAnchor="4.0" />
+            <FontAwesomeIconView glyphName="BANK" layoutX="0.8571434020996094" layoutY="28.0" size="20" text="" AnchorPane.rightAnchor="419.2857131958008" AnchorPane.topAnchor="10.0" />
+            <Label layoutX="8.0" layoutY="35.0" prefHeight="79.0" prefWidth="425.0" styleClass="account_number" text="Our mission is to empower our customers by delivering innovative financial solutions, personalized service, and unwavering support." textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="Calibri Light" size="18.0" />
+               </font>
+            </Label>
+            <FontAwesomeIconView glyphName="BANK" layoutX="6.0" layoutY="157.0" size="20" />
+            <Text layoutX="33.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Our Contacts" />
+            <Label layoutX="8.0" layoutY="179.0" prefHeight="22.0" prefWidth="179.0" styleClass="account_number" text="Kampala-Road Branch :" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Light" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="187.0" layoutY="208.0" prefHeight="22.0" prefWidth="131.0" styleClass="account_number" text="313 880 000 02" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Light" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView glyphName="PHONE" />
+               </graphic>
+            </Label>
+            <Label layoutX="8.0" layoutY="208.0" prefHeight="22.0" prefWidth="179.0" styleClass="account_number" text="Ggaba - Road  Branch :" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Light" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="189.0" layoutY="236.0" prefHeight="22.0" prefWidth="131.0" styleClass="account_number" text="313 880 000 03" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Light" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView glyphName="PHONE" />
+               </graphic>
+            </Label>
+            <Label layoutX="10.0" layoutY="236.0" prefHeight="22.0" prefWidth="179.0" styleClass="account_number" text="Mbikko-Town Branch :" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Light" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="189.0" layoutY="263.0" prefHeight="22.0" prefWidth="131.0" styleClass="account_number" text="313 880 000 04" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Light" size="18.0" />
+               </font>
+               <graphic>
+                  <FontAwesomeIconView glyphName="PHONE" />
+               </graphic>
+            </Label>
+            <Label layoutX="10.0" layoutY="263.0" prefHeight="22.0" prefWidth="179.0" styleClass="account_number" text="Luwero-Town Branch :" textFill="WHITE">
+               <font>
+                  <Font name="Calibri Light" size="18.0" />
+               </font>
+            </Label>
+         </children>
+         <styleClass>
+            <String fx:value="account" />
+            <String fx:value="account_gradient" />
+         </styleClass>
+      </AnchorPane>
+      <AnchorPane layoutX="406.0" layoutY="434.0" prefHeight="296.0" prefWidth="393.0" AnchorPane.bottomAnchor="38.0" AnchorPane.rightAnchor="10.0">
+         <children>
+            <VBox layoutX="205.0" layoutY="-34.0" prefHeight="100.0" prefWidth="35.0" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="14.0" />
+            <FontAwesomeIconView glyphName="BANK" layoutX="6.714290618896484" layoutY="28.14285659790039" size="20" AnchorPane.rightAnchor="365.4285659790039" AnchorPane.topAnchor="11.0" />
+            <Text layoutX="32.8046875" layoutY="30.46875" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-fill: #ECF39E;" text="Our Services" wrappingWidth="138.84373903274536" AnchorPane.bottomAnchor="260.0" AnchorPane.rightAnchor="224.0" />
+            <Label layoutX="6.0" layoutY="53.0" prefHeight="100.0" prefWidth="389.0" styleClass="account_number" text="1.Personal Banking: From checking and savings accounts to personal loans and mortgages, we provide solutions that help you manage your money effectively." textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="Calibri Light" size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="3.0" layoutY="179.0" prefHeight="100.0" prefWidth="389.0" styleClass="account_number" text="2.Business Banking: Our suite of business services includes everything from business accounts and loans to merchant services, all designed to support your growth and success." textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="Calibri Light" size="18.0" />
+               </font>
+            </Label>
+         </children>
+         <styleClass>
+            <String fx:value="account" />
+            <String fx:value="account_gradient" />
+         </styleClass>
+      </AnchorPane>
+      <Label layoutX="18.0" layoutY="273.0" prefHeight="123.0" prefWidth="828.0" styleClass="account_number" text="At Nana Bank, we’re more than just a financial institution we’re a partner in your journey towards financial success. Since our inception, we’ve been dedicated to providing exceptional banking services tailored to meet the diverse needs of our clients. Whether you’re an individual, a family, or a business, we’re here to help you achieve your financial goals with confidence." textFill="WHITE" wrapText="true">
+         <font>
+            <Font name="Calibri Light" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

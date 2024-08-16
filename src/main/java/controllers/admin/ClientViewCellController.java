@@ -3,11 +3,15 @@ package controllers.admin;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javax.persistence.EntityManager;
+
+import entitymanagerFactory.EntityMangerFactoryRepo;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import model.ClientView;
+import model.Model;
 
 public class ClientViewCellController implements Initializable{
 	
@@ -17,6 +21,8 @@ public class ClientViewCellController implements Initializable{
 	private Button btndelete;
 	
 	private final ClientView client;
+	
+	EntityManager em = EntityMangerFactoryRepo.getEntityManager(); // Open EntityManager once
 	
 	public ClientViewCellController(ClientView client) {
 		this.client = client;
@@ -43,7 +49,18 @@ public class ClientViewCellController implements Initializable{
 	    	acc_no.setText(client.getAccountNumber());
 	    }
 	   
+	    btndelete.setOnAction(event -> onDelete(em,client.getPayeeAddress()));
 	}
 
+	private void onDelete(EntityManager em,String payeeAddress) {
+		try {
+			Model.getInstance().deleteClient(em, payeeAddress);
+			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
 
+	
 }

@@ -17,28 +17,7 @@ public class ClientController implements Initializable{
 	 @Override
 	    public void initialize(URL location, ResourceBundle resources) {
 	        
-			  if (payeeAddress != null) {
-			  client_form.setCenter(Model.getInstance().getViewFactory().getDashboardView(payeeAddress));
-			  } else {
-				  System.out.println("Payee address is not set.");
-				  }
-		
-	        Model.getInstance().getViewFactory().getClientSelectedMenuItem().addListener((observableValue, oldVal, newVal) -> {
-	            switch (newVal) {
-	                case TRANSACTIONS:
-	                    client_form.setCenter(Model.getInstance().getViewFactory().getTransactionview(payeeAddress));
-	                    break;
-	                case ACCOUNTS:
-	                    client_form.setCenter(Model.getInstance().getViewFactory().getAccountsview(payeeAddress));
-	                    break;
-	                case DASHBOARD :
-	                    client_form.setCenter(Model.getInstance().getViewFactory().getDashboardView(payeeAddress));
-	                    break;
-	                case PROFILE :
-	                	client_form.setCenter(Model.getInstance().getViewFactory().getProfile(payeeAddress));
-	                	break;
-	            }
-	        });
+	        
 	    }
 
 	    public String getPayeeAddress() {
@@ -47,5 +26,23 @@ public class ClientController implements Initializable{
 
 	    public void setPayeeAddress(String payeeAddress) {
 	        this.payeeAddress = payeeAddress;
+	        
+	        Model.getInstance().getViewFactory().getClientSelectedMenuItem().addListener((observableValue, oldVal, newVal) -> {
+	           
+	        	switch (newVal) {
+	                case TRANSACTIONS:
+	                    client_form.setCenter(Model.getInstance().getViewFactory().getTransactionview(payeeAddress));
+	                    break;
+	                case ACCOUNTS:
+	                    client_form.setCenter(Model.getInstance().getViewFactory().getAccountsview(payeeAddress));
+	                    break;
+	                case PROFILE :
+	                	client_form.setCenter(Model.getInstance().getViewFactory().getProfile(payeeAddress));
+	                	break;
+				default:
+					 client_form.setCenter(Model.getInstance().getViewFactory().getDashboardView(payeeAddress));
+					break;
+	            }
+	        });
 	    }
 }
