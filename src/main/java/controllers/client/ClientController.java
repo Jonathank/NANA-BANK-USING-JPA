@@ -39,6 +39,9 @@ public class ClientController implements Initializable{
 	                case PROFILE :
 	                	client_form.setCenter(Model.getInstance().getViewFactory().getProfile(payeeAddress));
 	                	break;
+	                case REPORT :
+	                	client_form.setCenter(Model.getInstance().getViewFactory().getReport(payeeAddress));
+	                	break;
 				default:
 					 client_form.setCenter(Model.getInstance().getViewFactory().getDashboardView(payeeAddress));
 					break;

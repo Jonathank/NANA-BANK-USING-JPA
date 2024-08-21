@@ -7,6 +7,9 @@ import java.util.ResourceBundle;
 import javax.persistence.EntityManager;
 
 import entitymanagerFactory.EntityMangerFactoryRepo;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -14,6 +17,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
+import javafx.util.Duration;
 import model.AccountView;
 import model.CheckingAccount;
 import model.Model;
@@ -39,6 +43,8 @@ public class AccountsController implements Initializable{
 	public void initialize(URL location, ResourceBundle resources) {
 		btnsavT.setOnAction(event -> onTransferToChecking());
 		btnCheckT.setOnAction(event -> onTransferToSavings());
+		
+		fetchData();
 	}
 
 	private void onTransferToSavings() {
@@ -115,6 +121,26 @@ public class AccountsController implements Initializable{
             }
     }
     
+    private void loadData() {
+        // Load data from the database in a separate thread
+        new Thread(() -> {
+            try {
+            	updateAccountData();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
+    }
+
+    private void fetchData() {
+    	 Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e ->
+    	 loadData()),
+         new KeyFrame(Duration.seconds(5)));
+ clock.setCycleCount(Animation.INDEFINITE);
+ clock.play();
+        
+    }
+	
   //alert
 	private void showAlert(AlertType type, String title, String header, String content) {
 	    Alert alert = new Alert(type);

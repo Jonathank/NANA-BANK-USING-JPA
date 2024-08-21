@@ -6,6 +6,7 @@ import java.net.URL;
 import controllers.admin.AdminController;
 import controllers.client.AccountsController;
 import controllers.client.ClientController;
+import controllers.client.MessageController;
 import controllers.client.ProfileController;
 import controllers.client.TransactionController;
 import controllers.dashboard.DashBoardController;
@@ -26,6 +27,7 @@ public class ViewFactory {
 	private AnchorPane root;
 	private AnchorPane transactionview;
 	private AnchorPane accountsview;
+	private AnchorPane report;
 
 	// admin views
 	private final ObjectProperty<AdminMenuOptions> adminSelectedMenuItem;
@@ -131,6 +133,27 @@ public class ViewFactory {
 				  }
 		}
 			return profile; 
+		}
+		
+		/**
+		 * @return the report
+		 */
+		public AnchorPane getReport(String payeeAddress) {
+			if (report == null) {
+				 try {
+					  FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/client/Message.fxml"));
+					  report = loader.load();
+					  MessageController Controller = loader.getController();
+			          
+			          if (payeeAddress != null) {
+			        	  Controller.setPayeeAddress(payeeAddress);
+			          } 
+				  } catch (IOException e) {
+					  e.printStackTrace(); 
+				  
+				  }
+		}
+			return report;
 		}
 
 	/**
@@ -308,6 +331,6 @@ public class ViewFactory {
 			e.printStackTrace();
 		}
 	}
-
+	
 	
 }

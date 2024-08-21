@@ -36,7 +36,7 @@
                   </Button>
                   <Button fx:id="btntrans" mnemonicParsing="false" text="Transaction">
                      <graphic>
-                        <FontAwesomeIconView glyphName="HANDSHAKE" size="20" />
+                        <FontAwesomeIconView glyphName="EXCHANGE" size="20" />
                      </graphic>
                   </Button>
                   <Button fx:id="btnacct" mnemonicParsing="false" text="Accounts">

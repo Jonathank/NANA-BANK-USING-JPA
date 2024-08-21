@@ -42,6 +42,10 @@ public class Client {
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Transaction> transaction = new HashSet<>();
     
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL,orphanRemoval = true)
+    private Set<Message> message = new HashSet<>();
+    
+    
     public Client(String fname, String lname, String gender, String dateOfBirth,  String password) {
       
     	if (fname == null || fname.isEmpty() || lname == null || lname.isEmpty()) {

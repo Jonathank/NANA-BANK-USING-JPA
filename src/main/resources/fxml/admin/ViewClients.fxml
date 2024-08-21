@@ -12,10 +12,10 @@
    <children>
       <Text layoutX="35.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clients" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
       <ListView fx:id="viewClientsLV" layoutX="14.0" layoutY="68.0" prefHeight="650.0" prefWidth="800.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="68.0" />
-      <HBox layoutX="476.0" layoutY="15.0" prefHeight="36.0" prefWidth="338.0">
+      <HBox layoutX="402.0" layoutY="16.0" prefHeight="41.0" prefWidth="434.0">
          <children>
-            <TextField promptText="Enter PayeeAddress" />
-            <Button mnemonicParsing="false" prefHeight="30.0" prefWidth="127.0" styleClass="search_button" text="Search">
+            <TextField prefWidth="51.0" promptText="Enter PayeeAddress" />
+            <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="133.0" styleClass="search_button" text="Search">
                <graphic>
                   <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" size="20" />
                </graphic>

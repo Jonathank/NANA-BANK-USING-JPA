@@ -13,7 +13,7 @@ import views.AdminMenuOptions;
 public class AdminMenuController implements Initializable {
 
 	@FXML
-	private Button btnAccType,btnwithd,btncreateC,btnclients,btndepo,btnlogout;
+	private Button btnview,btnAccType,btnwithd,btncreateC,btnclients,btndepo,btnlogout;
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
@@ -27,8 +27,13 @@ public class AdminMenuController implements Initializable {
 		btnAccType.setOnAction(event -> onAddAccountType());
 		btnwithd.setOnAction(event -> onWithdraw());
 		btnlogout.setOnAction(event -> onLogout());
+		btnview.setOnAction(event -> onView());
 	}
 	
+	private void onView() {
+		Model.getInstance().getViewFactory().getAdminSelectedMenuItem().set(AdminMenuOptions.VIEW);
+	}
+
 	private void onLogout() {
 		Stage stage =(Stage) btnlogout.getScene().getWindow();
 		

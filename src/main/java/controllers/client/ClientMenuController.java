@@ -25,6 +25,11 @@ public class ClientMenuController implements Initializable {
 		btnacct.setOnAction(event -> onAccount());
 		btnprofile.setOnAction(event -> onProfile());
 	    btnlogout.setOnAction(event -> onLogout());
+	    btnreport.setOnAction(event -> onReport());
+	}
+
+	private void onReport() {
+		Model.getInstance().getViewFactory().getClientSelectedMenuItem().set(ClientMenuOptions.REPORT);
 	}
 
 	private void onLogout() {

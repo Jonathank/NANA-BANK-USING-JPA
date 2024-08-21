@@ -6,5 +6,6 @@ public enum AdminMenuOptions {
 	CLIENTS,
 	DEPOSIT,
 	WITHDRAW,
-	ADDACCOUNT_TYPE
+	ADDACCOUNT_TYPE,
+	VIEW
 }
