@@ -14,6 +14,7 @@ import javax.persistence.NonUniqueResultException;
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 
+import controllers.admin.MessageView;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -519,4 +520,67 @@ public void deleteClient(EntityManager em, String payeeAddress) {
     }
 }
 
+//fetches messages to admin
+public ObservableList<MessageView> loadMessageDataFromDatabase(EntityManager em) {
+    ObservableList<MessageView> messages = FXCollections.observableArrayList();
+    
+    try {
+        // Start a transaction if required
+        if (!em.getTransaction().isActive()) {
+            em.getTransaction().begin();
+        }
+
+        // Execute the query
+        TypedQuery<MessageView> query = em.createQuery("SELECT m FROM MessageView m", MessageView.class);
+        List<MessageView> messageList = query.getResultList();
+
+        // Commit the transaction if it was started manually
+        if (em.getTransaction().isActive()) {
+            em.getTransaction().commit();
+        }
+
+        // Update UI elements on the JavaFX Application Thread
+        Platform.runLater(() -> messages.addAll(messageList));
+
+    } catch (Exception e) {
+        // Rollback transaction if it was started and an error occurs
+        if (em.getTransaction().isActive()) {
+            em.getTransaction().rollback();
+        }
+        e.printStackTrace();
+    } 
+    
+    return messages;
+}
+
+public void updateStatus(EntityManager em, String payeeAddress,String MessageType) {
+   
+	em.getTransaction().begin();
+try {
+    String newstatus = "Viewed";
+    // Update the account balance
+    Query query  = em.createQuery(
+        "UPDATE Message a SET a.status = :newstatus WHERE a.client.payeeAddress = :payeeAddress AND a.MessageType = :MessageType");
+    
+    query.setParameter("newstatus", newstatus);
+    query.setParameter("payeeAddress", payeeAddress);
+    query.setParameter("MessageType", MessageType);
+ 
+    int updatedCount = query.executeUpdate();  // Get the number of updated rows
+
+    if (updatedCount == 0) {
+        throw new RuntimeException("No account updated, please check payee address and account type.");
+    }
+    em.getTransaction().commit();
+} catch (Exception e) {
+    // Rollback the transaction in case of an exception
+    if (em.getTransaction() != null && em.getTransaction().isActive()) {
+    	em.getTransaction().rollback();
+    }
+    throw new RuntimeException("Error updating status", e);
+} finally {
+    // Clear the EntityManager
+    em.clear();
+}
+}
 }

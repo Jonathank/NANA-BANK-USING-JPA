@@ -29,6 +29,9 @@ public class AdminController implements Initializable{
 			case ADDACCOUNT_TYPE :
 				Admin_form.setCenter(Model.getInstance().getViewFactory().getAddAccountType());
 				break;
+			case VIEW :
+				Admin_form.setCenter(Model.getInstance().getViewFactory().getViewMessages());
+				break;
 			default :
 				Admin_form.setCenter(Model.getInstance().getViewFactory().getCreateClientview());
 				break;

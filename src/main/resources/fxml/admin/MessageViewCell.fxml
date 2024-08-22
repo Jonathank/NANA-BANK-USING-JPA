@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="pane" prefHeight="109.0" prefWidth="430.0" styleClass="client_cell_container" stylesheets="@../../style/MessageViewCell.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <TextArea fx:id="textarea" editable="false" layoutX="11.0" layoutY="50.0" prefHeight="44.0" prefWidth="408.0" style="-fx-background-color: #EEEEEE; -fx-line-spacing: 10px;" wrapText="true">
+         <font>
+            <Font name="Arial Narrow" size="18.0" />
+         </font>
+      </TextArea>
+      <Text fx:id="payee" fill="#433e3e" layoutX="27.0" layoutY="38.09765625" strokeType="OUTSIDE" strokeWidth="0.0" text="payeeAddress" wrappingWidth="137.853515625" AnchorPane.topAnchor="25.0">
+         <font>
+            <Font name="Arial Narrow" size="14.0" />
+         </font>
+      </Text>
+      <Text fx:id="date" fill="#433e3e" layoutX="205.0" layoutY="38.09765625" strokeType="OUTSIDE" strokeWidth="0.0" text="date" wrappingWidth="126.853515625" AnchorPane.topAnchor="25.0">
+         <font>
+            <Font name="Arial Narrow" size="14.0" />
+         </font>
+      </Text>
+      <Label fx:id="status" alignment="CENTER" layoutX="358.0" layoutY="4.0" prefHeight="25.0" prefWidth="56.0" text="new" textAlignment="CENTER" AnchorPane.topAnchor="4.0">
+         <font>
+            <Font name="Arial Narrow" size="16.0" />
+         </font>
+      </Label>
+      <FontAwesomeIconView glyphName="USER" layoutX="5.0" layoutY="43.0" size="20" />
+      <Text fx:id="type" fill="#433e3e" layoutX="4.0" layoutY="17.0" strokeType="OUTSIDE" strokeWidth="0.0" text="type" wrappingWidth="137.853515625">
+         <font>
+            <Font name="Arial Narrow" size="14.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

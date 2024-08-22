@@ -1,26 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import javafx.scene.control.Button?>
+<?import java.lang.String?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="750.0" prefWidth="850.0" styleClass="viewclients_container" stylesheets="@../../style/viewClients.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.admin.ViewClientsController">
+<AnchorPane prefHeight="750.0" prefWidth="850.0" stylesheets="@../../style/viewMessages.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.admin.ViewMessagesController">
    <children>
-      <Text layoutX="35.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Clients" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
-      <ListView fx:id="viewmessages" layoutX="14.0" layoutY="68.0" prefHeight="650.0" prefWidth="800.0" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="68.0" />
-      <HBox layoutX="402.0" layoutY="16.0" prefHeight="41.0" prefWidth="434.0">
-         <children>
-            <TextField prefWidth="51.0" promptText="Enter PayeeAddress" />
-            <Button mnemonicParsing="false" prefHeight="43.0" prefWidth="133.0" styleClass="search_button" text="Search">
-               <graphic>
-                  <FontAwesomeIconView fill="WHITE" glyphName="SEARCH" size="20" />
-               </graphic>
-            </Button>
-         </children>
-      </HBox>
+      <Text layoutX="35.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Messages" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="14.0" />
+      <ListView fx:id="viewmessages" layoutX="144.0" layoutY="69.0" prefHeight="650.0" prefWidth="450.0" AnchorPane.leftAnchor="144.0" AnchorPane.topAnchor="69.0">
+         <styleClass>
+            <String fx:value="transaction_container_list-cell" />
+            <String fx:value="transaction_container_list-view" />
+         </styleClass></ListView>
    </children>
 </AnchorPane>

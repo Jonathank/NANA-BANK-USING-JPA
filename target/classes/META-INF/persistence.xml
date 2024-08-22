@@ -17,6 +17,7 @@
      <class>model.TransactionView</class>
      <class>model.AccountView</class>
      <class>model.User</class>
+     <class>model.Message</class>
      
       <!-- Add more classes as needed -->
 

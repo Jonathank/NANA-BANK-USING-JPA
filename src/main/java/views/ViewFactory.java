@@ -37,6 +37,7 @@ public class ViewFactory {
 	private AnchorPane WithdrawView;
 	private AnchorPane AddAccountType;
 	private AnchorPane profile;
+	private AnchorPane viewMessages;
 
 
 	public ViewFactory() {
@@ -214,6 +215,22 @@ public class ViewFactory {
 		}
 		return AddAccountType;
 	}
+	
+	/**
+	 * @return the viewMessages
+	 */
+	public AnchorPane getViewMessages() {
+		if (viewMessages == null) {
+			try {
+				viewMessages = new FXMLLoader(getClass().getResource("/fxml/admin/viewMessages.fxml")).load();
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return viewMessages;
+	}
+	
 	/**
 	 * @return the withdrawView
 	 */
@@ -331,6 +348,8 @@ public class ViewFactory {
 			e.printStackTrace();
 		}
 	}
+
 	
+
 	
 }

@@ -16,13 +16,13 @@ import model.Model;
 public class ClientViewCellController implements Initializable{
 	
 	@FXML
-	private Label fname,lname,date,paddress,Acc_type,acc_no;
+	private Label fname,lname,date,Acc_type,acc_no,paddress;
 	@FXML
 	private Button btndelete;
 	
 	private final ClientView client;
 	
-	EntityManager em = EntityMangerFactoryRepo.getEntityManager(); // Open EntityManager once
+	EntityManager em = EntityMangerFactoryRepo.getEntityManager();
 	
 	public ClientViewCellController(ClientView client) {
 		this.client = client;

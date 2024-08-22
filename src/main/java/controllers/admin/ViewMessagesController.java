@@ -17,43 +17,41 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.util.Callback;
 import javafx.util.Duration;
-import model.ClientView;
 import model.Model;
-import views.ClientCellFactory;
+import views.MessageCellFactory;
 
 public class ViewMessagesController implements Initializable{
 //main view
 	@FXML
-	private ListView<ClientView> viewmessages;
+	private ListView<MessageView> viewmessages;
 
-	EntityManager em = EntityMangerFactoryRepo.getEntityManager();
+	EntityManager em;
     
 	//TODO finish this modification tomorrow
 	
 	 @Override
 	    public void initialize(URL location, ResourceBundle resources) {
+		 em = EntityMangerFactoryRepo.getEntityManager();
 	        // Set custom cell factory
-		 viewmessages.setCellFactory(new Callback<ListView<ClientView>, ListCell<ClientView>>() {
+		 viewmessages.setCellFactory(new Callback<ListView<MessageView>, ListCell<MessageView>>() {
 	            @Override
-	            public ListCell<ClientView> call(ListView<ClientView> listView) {
-	                return new ClientCellFactory();
+	            public ListCell<MessageView> call(ListView<MessageView> listView) {
+	                return new MessageCellFactory();
 	            }
 	        });
-
-	        // Initial load data from database
-	        loadData();
-
-	        fetchData();
+		 
+		 loadData();
+	     fetchData();
 			
 	    }
 
 	    private void loadData() {
 	        // Load data from the database in a separate thread
 	        new Thread(() -> {
-	        	ObservableList<ClientView> clients = Model.getInstance().loadDataFromDatabase(em);
+	        	ObservableList<MessageView> messages = Model.getInstance().loadMessageDataFromDatabase(em);
 	            // Update the ListView on the JavaFX Application Thread
 	            Platform.runLater(() -> {
-	            	viewmessages.getItems().setAll(clients); // Update the ListView items
+	            	viewmessages.getItems().setAll(messages);
 	            });
 	        }).start();
 	    }
@@ -61,7 +59,7 @@ public class ViewMessagesController implements Initializable{
 	    private void fetchData() {
 	    	 Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e ->
 	    	 loadData()),
-             new KeyFrame(Duration.seconds(5)));
+             new KeyFrame(Duration.seconds(3)));
      clock.setCycleCount(Animation.INDEFINITE);
      clock.play();
 	       

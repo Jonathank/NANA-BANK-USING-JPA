@@ -17,6 +17,7 @@ public class Message {
 	private String messages;
 	private String MessageType;
 	private LocalDate dateCreated;
+	private String  status;
 	
 	@ManyToOne
 	@JoinColumn(name = "payeeAddress",insertable = true, updatable = true)
@@ -27,6 +28,7 @@ public class Message {
 	public Message(String msg) {
 		this.messages = msg;
 		this.dateCreated = LocalDate.now();
+		this.status = "New";
 	}
 	
 	
@@ -84,5 +86,19 @@ public class Message {
 	 */
 	public void setMessageType(String messageType) {
 		MessageType = messageType;
+	}
+
+	/**
+	 * @return the status
+	 */
+	public String getStatus() {
+		return status;
+	}
+
+	/**
+	 * @param status the status to set
+	 */
+	public void setStatus(String status) {
+		this.status = status;
 	}
 }
