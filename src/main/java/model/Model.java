@@ -539,8 +539,7 @@ public ObservableList<MessageView> loadMessageDataFromDatabase(EntityManager em)
             em.getTransaction().commit();
         }
 
-        // Update UI elements on the JavaFX Application Thread
-        Platform.runLater(() -> messages.addAll(messageList));
+        messages.addAll(messageList);
 
     } catch (Exception e) {
         // Rollback transaction if it was started and an error occurs

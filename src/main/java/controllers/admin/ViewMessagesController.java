@@ -40,19 +40,22 @@ public class ViewMessagesController implements Initializable{
 	            }
 	        });
 		 
-		 loadData();
-	     fetchData();
-			
+		 //loadData();
+	     fetchData();	
 	    }
 
-	    private void loadData() {
+	 private void loadData() {
 	        // Load data from the database in a separate thread
 	        new Thread(() -> {
-	        	ObservableList<MessageView> messages = Model.getInstance().loadMessageDataFromDatabase(em);
-	            // Update the ListView on the JavaFX Application Thread
-	            Platform.runLater(() -> {
-	            	viewmessages.getItems().setAll(messages);
-	            });
+	            try {
+	                ObservableList<MessageView> messages = Model.getInstance().loadMessageDataFromDatabase(em);
+	                // Update the ListView on the JavaFX Application Thread
+	                Platform.runLater(() -> {
+	                    viewmessages.getItems().setAll(messages);
+	                });
+	            } catch (Exception e) {
+	                e.printStackTrace(); 
+	            }
 	        }).start();
 	    }
 
