@@ -10,8 +10,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import model.CheckingAccount;
 import model.ClientView;
 import model.Model;
+import model.SavingsAccount;
 
 public class ClientViewCellController implements Initializable{
 	
@@ -54,8 +56,12 @@ public class ClientViewCellController implements Initializable{
 
 	private void onDelete(EntityManager em,String payeeAddress) {
 		try {
-			Model.getInstance().deleteClient(em, payeeAddress);
-			
+			if(client.getAccountType().equalsIgnoreCase("savings")) {
+			Model.getInstance().deleteClient(em, payeeAddress,SavingsAccount.class);
+			}
+			if(client.getAccountType().equalsIgnoreCase("checking")) {
+				Model.getInstance().deleteClient(em, payeeAddress,CheckingAccount.class);
+				}
 		}catch(Exception e) {
 			e.printStackTrace();
 		}

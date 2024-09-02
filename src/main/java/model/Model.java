@@ -208,6 +208,27 @@ public ObservableList<ClientView> loadDataFromDatabase(EntityManager em) {
     return clients;
 }
 
+public ObservableList<ClientView> loadClientViewDataFromDatabase(EntityManager em, String payeeAddress) {
+	ObservableList<ClientView> client = FXCollections.observableArrayList();
+    try {
+        TypedQuery<ClientView> query = em.createQuery(
+            "SELECT c FROM ClientView c WHERE c.payeeAddress LIKE :payeeAddress", ClientView.class);
+       
+        query.setParameter("payeeAddress", "%" + payeeAddress + "%");
+       
+        List<ClientView>results = query.getResultList();
+        
+        Platform.runLater(() -> {
+        	client.addAll(results);
+        });
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    
+    return client;
+}
+
+
 //loads transaction data for view
 public ObservableList<TransactionView> loadTransactionData(EntityManager em,String sender, String reciever) {
     ObservableList<TransactionView> transactions = FXCollections.observableArrayList();
@@ -503,11 +524,12 @@ public void deductSenderBalance(EntityManager em, String payeeAddress, BigDecima
      em.clear();
 }
 
-public void deleteClient(EntityManager em, String payeeAddress) {
+public void deleteClient(EntityManager em, String payeeAddress, Class<? extends Account> accountType) {
     em.getTransaction().begin();
     try {
-        // Use Query for delete operation
-        Query query = em.createQuery("DELETE FROM Client c WHERE c.payeeAddress = :payeeAddress");
+        // Use JPQL to delete based on the account type
+        String queryString = "DELETE FROM " + accountType.getSimpleName() + " a WHERE a.client.payeeAddress = :payeeAddress";
+        Query query = em.createQuery(queryString);
         query.setParameter("payeeAddress", payeeAddress);
         int deletedCount = query.executeUpdate(); // This returns the number of entities deleted
         em.getTransaction().commit();

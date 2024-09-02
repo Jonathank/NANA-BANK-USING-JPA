@@ -33,7 +33,9 @@ import model.SavingsAccount;
 import model.Transaction;
 import model.TransactionView;
 import views.TransactionCellFactory;
-
+/**
+ * @author KYEYUNE JONATHAN
+ */
 public class DashBoardController implements Initializable {
 
 	@FXML

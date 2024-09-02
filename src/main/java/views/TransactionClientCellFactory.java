@@ -1,6 +1,7 @@
 package views;
 
 import controllers.client.TransactionClientCellController;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.ListCell;
 import model.TransactionView;
@@ -10,6 +11,7 @@ public class TransactionClientCellFactory extends ListCell<TransactionView> {
 	@Override
 	protected void updateItem(TransactionView transaction, boolean empty) {
 		super.updateItem(transaction, empty);
+		Platform.runLater(() -> {
 		if(empty) {
 			setText(null);
 			setGraphic(null);
@@ -24,5 +26,6 @@ public class TransactionClientCellFactory extends ListCell<TransactionView> {
 				e.printStackTrace();
 			}
 		}
+		  });
 	}
 }

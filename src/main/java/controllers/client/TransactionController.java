@@ -6,15 +6,21 @@ import java.util.ResourceBundle;
 import javax.persistence.EntityManager;
 
 import entitymanagerFactory.EntityMangerFactoryRepo;
+import javafx.animation.Animation;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.util.Callback;
+import javafx.util.Duration;
 import model.Model;
 import model.TransactionView;
 import views.TransactionClientCellFactory;
-
+/**
+ * @author KYEYUNE JONATHAN
+ */
 public class TransactionController implements Initializable{
 
 	@FXML
@@ -33,6 +39,8 @@ public class TransactionController implements Initializable{
 	            }
 	        });
 		
+		fetchData();
+		
 	}
 	/**
 	 * @return the payeeAddress
@@ -50,5 +58,26 @@ public class TransactionController implements Initializable{
 			tlistview.setItems(Model.getInstance().loadTransactionData(em, payeeAddress, payeeAddress));
     } 
 	}
+	
+	 private void loadData() {
+	        // Load data from the database in a separate thread
+	        new Thread(() -> {
+	            try {
+	                // Fetch data from the model
+	            	tlistview.setItems(Model.getInstance().loadTransactionData(em, payeeAddress, payeeAddress));
+	            } catch (Exception e) {
+	                e.printStackTrace();
+	            }
+	        }).start();
+	    }
+
+	    private void fetchData() {
+	    	 Timeline clock = new Timeline(new KeyFrame(Duration.ZERO, e ->
+	    	 loadData()),
+	         new KeyFrame(Duration.seconds(4)));
+	 clock.setCycleCount(Animation.INDEFINITE);
+	 clock.play();
+	        
+	    }
 
 }

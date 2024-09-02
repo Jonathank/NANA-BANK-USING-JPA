@@ -8,7 +8,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import model.TransactionView;
-
+/**
+ * @author KYEYUNE JONATHAN
+ */
 public class TransactionCellController implements Initializable {
 
 	@FXML

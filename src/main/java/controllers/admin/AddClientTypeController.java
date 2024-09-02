@@ -23,7 +23,9 @@ import model.Client;
 import model.ClientView;
 import model.Model;
 import model.SavingsAccount;
-
+/**
+ * @author KYEYUNE JONATHAN
+ */
 public class AddClientTypeController implements Initializable{
 
 	@FXML
